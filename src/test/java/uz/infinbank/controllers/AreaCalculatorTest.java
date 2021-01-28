@@ -21,8 +21,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @MockBean(classes = {CalculatorService.class})
-@WebMvcTest(controllers = Calculator.class)
-class CalculatorTest {
+@WebMvcTest(controllers = AreaCalculator.class)
+class AreaCalculatorTest {
 
     private static ObjectMapper objectMapper = new ObjectMapper();
     @Autowired
@@ -38,7 +38,7 @@ class CalculatorTest {
     @Test
     void square() throws Exception {
 
-        when(calculator.areaFor(any(Square.class))).thenReturn(42.0);
+        when(calculator.area(any(Square.class))).thenReturn(42.0);
 
         Square square = new Square();
 
@@ -61,7 +61,7 @@ class CalculatorTest {
     @Test
     void rectangle() throws Exception {
 
-        when(calculator.areaFor(any(Rectangle.class))).thenReturn(42.0);
+        when(calculator.area(any(Rectangle.class))).thenReturn(42.0);
 
         Rectangle rectangle = new Rectangle();
 
@@ -85,7 +85,7 @@ class CalculatorTest {
     @Test
     void triangle() throws Exception {
 
-        when(calculator.areaFor(any(Triangle.class))).thenReturn(42.0);
+        when(calculator.area(any(Triangle.class))).thenReturn(42.0);
 
         Triangle triangle = new Triangle();
 
@@ -95,8 +95,9 @@ class CalculatorTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
 
-        triangle.setBase(20);
-        triangle.setHeight(20);
+        triangle.setA(20);
+        triangle.setB(40);
+        triangle.setC(50);
 
         mockMvc.perform(post("/calculator/area/triangle")
                 .content(toJson(triangle))
@@ -109,7 +110,7 @@ class CalculatorTest {
     @Test
     void circle() throws Exception {
 
-        when(calculator.areaFor(any(Circle.class))).thenReturn(42.0);
+        when(calculator.area(any(Circle.class))).thenReturn(42.0);
 
         Circle circle = new Circle();
 

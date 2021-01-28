@@ -17,13 +17,13 @@ import javax.validation.Valid;
 
 @Log4j2
 @RestController
-@RequestMapping("/calculator/area")
-public class Calculator {
+@RequestMapping("/calculator/perimeter")
+public class PerimeterCalculator {
 
     private final CalculatorService calculatorService;
 
     @Autowired
-    public Calculator(CalculatorService calculatorService) {
+    public PerimeterCalculator(CalculatorService calculatorService) {
 
         this.calculatorService = calculatorService;
     }
@@ -35,7 +35,7 @@ public class Calculator {
 
         log.debug(square);
 
-        return calculatorService.areaFor(square);
+        return calculatorService.perimeter(square);
     }
 
     @PostMapping(value = "/rectangle",
@@ -45,7 +45,7 @@ public class Calculator {
 
         log.debug(rectangle);
 
-        return calculatorService.areaFor(rectangle);
+        return calculatorService.perimeter(rectangle);
     }
 
     @PostMapping(value = "/triangle",
@@ -55,7 +55,7 @@ public class Calculator {
 
         log.debug(triangle);
 
-        return calculatorService.areaFor(triangle);
+        return calculatorService.perimeter(triangle);
     }
 
     @PostMapping(value = "/circle",
@@ -65,6 +65,6 @@ public class Calculator {
 
         log.debug(circle);
 
-        return calculatorService.areaFor(circle);
+        return calculatorService.perimeter(circle);
     }
 }
