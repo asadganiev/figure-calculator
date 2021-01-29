@@ -1,6 +1,5 @@
 package uz.infinbank.figures;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +12,5 @@ import javax.validation.constraints.Positive;
 public class Square {
 
     @Positive
-    @JsonProperty("width")
     private double width;
 }

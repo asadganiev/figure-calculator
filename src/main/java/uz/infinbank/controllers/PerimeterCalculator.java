@@ -17,7 +17,10 @@ import javax.validation.Valid;
 
 @Log4j2
 @RestController
-@RequestMapping("/calculator/perimeter")
+@RequestMapping(value = "/calculator/perimeter",
+        consumes = MediaType.APPLICATION_JSON_VALUE,
+        produces = MediaType.APPLICATION_JSON_VALUE
+)
 public class PerimeterCalculator {
 
     private final CalculatorService calculatorService;
@@ -28,9 +31,7 @@ public class PerimeterCalculator {
         this.calculatorService = calculatorService;
     }
 
-    @PostMapping(value = "/square",
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/square")
     public Double square(@Valid @RequestBody Square square) {
 
         log.debug(square);
@@ -38,9 +39,7 @@ public class PerimeterCalculator {
         return calculatorService.perimeter(square);
     }
 
-    @PostMapping(value = "/rectangle",
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/rectangle")
     public Double rectangle(@Valid @RequestBody Rectangle rectangle) {
 
         log.debug(rectangle);
@@ -48,9 +47,7 @@ public class PerimeterCalculator {
         return calculatorService.perimeter(rectangle);
     }
 
-    @PostMapping(value = "/triangle",
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/triangle")
     public Double triangle(@Valid @RequestBody Triangle triangle) {
 
         log.debug(triangle);
@@ -58,9 +55,7 @@ public class PerimeterCalculator {
         return calculatorService.perimeter(triangle);
     }
 
-    @PostMapping(value = "/circle",
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/circle")
     public Double circle(@Valid @RequestBody Circle circle) {
 
         log.debug(circle);

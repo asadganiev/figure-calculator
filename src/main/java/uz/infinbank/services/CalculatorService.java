@@ -34,7 +34,7 @@ public class CalculatorService {
     }
 
     /**
-     * Formula for Rectangle area is (a + b) x 2
+     * Formula for Rectangle perimeter is (a + b) x 2
      */
     public Double perimeter(Rectangle rectangle) {
 

@@ -14,16 +14,6 @@ public class TriangleConstraintValidator implements ConstraintValidator<ValidTri
 
     public boolean isValid(Triangle triangle, ConstraintValidatorContext context) {
 
-        try {
-            return isValid(triangle);
-        } catch (Exception ignored) {
-        }
-
-        return false;
-    }
-
-    private boolean isValid(Triangle triangle) {
-
         double a = triangle.getA(), b = triangle.getB(), c = triangle.getC();
         return (a + b) > c && (a + c) > b && (b + c) > a;
     }
